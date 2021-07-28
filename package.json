@@ -3,7 +3,9 @@
   "version": "1.0.0-alpha.0",
   "description": "A Tailwindcss Storybook addon",
   "main": "dist/preset.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "./node_modules/.bin/babel ./src --extensions .ts,.tsx --out-dir ./dist",
     "build-storybook": "build-storybook -o docs",
@@ -16,25 +18,22 @@
   ],
   "author": "Tarik Hamilton <me@tarikhamilton.com>",
   "license": "MIT",
-  "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
-  },
   "devDependencies": {
     "@babel/cli": "^7.14.8",
     "@babel/core": "^7.12.17",
     "@storybook/addon-actions": "^6.1.18",
     "@storybook/addon-essentials": "^6.1.18",
     "@storybook/addon-links": "^6.1.18",
-    "@storybook/react": "^6.1.18",
-    "babel-loader": "^8.2.2"
-  },
-  "dependencies": {
     "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/react": "^6.1.18",
     "@tailwindcss/postcss7-compat": "^2.0.4",
+    "babel-loader": "^8.2.2",
     "autoprefixer": "^9",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "postcss": "^7",
     "styled-components": "^5.2.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat"
-  }
+  },
+  "dependencies": {}
 }
