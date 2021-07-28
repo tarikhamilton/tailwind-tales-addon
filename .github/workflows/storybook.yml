@@ -1,7 +1,10 @@
 name: Build and Deploy
 on:
   push:
-    paths: ['stories/**', 'src/components/**']
+    branches:
+      - main
+      - gh-pages
+    # paths: ['stories/**', 'src/components/**']
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
