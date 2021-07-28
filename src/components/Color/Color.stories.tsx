@@ -7,4 +7,6 @@ export default {
   component: Color,
 } as Meta
 
-export const Primary = () => <Color name="Bad Dad" value="#baddad" />
+export const Primary = () => (
+  <Color name="Bad Dad" value="#baddad" />
+)

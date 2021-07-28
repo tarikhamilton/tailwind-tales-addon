@@ -24,14 +24,14 @@ const DEFAULT_COLOR_WEIGHT = 400
 
 export const Color = ({
   appendToClassName = '',
-  className = 'w-full',
+  className = 'h-32 w-32 flex flex-col items-center justify-center shadow-lg',
   name = '',
   modifier = '',
   separator = '-',
   value,
   copyClassName = false,
 }: ColorProps) => {
-  const displayedValue = `${name}${separator}${modifier}`
+  const displayedValue = modifier ? `${name}${separator}${modifier}` : name
   const fullClassName = className + appendToClassName
 
   return (
