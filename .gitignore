@@ -1,6 +1,0 @@
-.cache/
-.env
-node_modules/
-public
-dist/
-docs/
