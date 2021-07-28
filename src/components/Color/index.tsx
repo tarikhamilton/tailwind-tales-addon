@@ -46,6 +46,8 @@ export const Color = ({
   )
 }
 
+export default Color
+
 export const TailwindCssDotComColor = ({
   appendToClassName = '',
   className = 'h-10 w-full rounded ring-1 ring-inset ring-black ring-opacity-0',
