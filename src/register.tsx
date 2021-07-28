@@ -12,14 +12,12 @@ addons.register(ADDON_ID, (api) => {
     type: types.PANEL,
     title: 'Design Tokens',
     render: ({ active, key, ...rest }) => {
-      const [globals] = useGlobals()
-      const colors = globals?.tailwindConfig?.theme?.colors
-
-      console.log(globals, globals?.tailwindConfig)
+      const [{ tailwindConfig }] = useGlobals()
+      const colors = tailwindConfig?.theme?.colors
 
       return (
         <AddonPanel active={active} key={key}>
-          <StyledPalette colors={colors} />
+          <StyledPalette colors={colors} showVariants />
         </AddonPanel>
       )
     },

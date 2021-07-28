@@ -1,8 +1,9 @@
 {
   "name": "tailwind-tales-addon",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.0",
   "description": "A Tailwindcss Storybook addon",
   "main": "dist/preset.js",
+  "files": ["dist"],
   "scripts": {
     "build": "./node_modules/.bin/babel ./src --extensions .ts,.tsx --out-dir ./dist",
     "build-storybook": "build-storybook",

@@ -15,6 +15,8 @@ export interface ColorProps {
   separator?: string
   /** Color value such as hex or rgb. */
   value: string
+  /** Copy Tailwind class name to clipboard instead of color value. */
+  copyClassName?: boolean
 }
 
 const IGNORED_COLOR_VALUES = ['transparent', 'current', 'black', 'white']
@@ -27,22 +29,22 @@ export const Color = ({
   modifier = '',
   separator = '-',
   value,
-}: ColorProps) => (
-  <StyledColor
-    className={className + appendToClassName}
-    onClick={() => copyToClipboard(value)}
-    style={{ backgroundColor: value }}
-  >
-    <p className="mb-2">{value}</p>
-    {
-      <p>
-        {name}
-        {separator}
-        {modifier}
-      </p>
-    }
-  </StyledColor>
-)
+  copyClassName = false,
+}: ColorProps) => {
+  const displayedValue = `${name}${separator}${modifier}`
+  const fullClassName = className + appendToClassName
+
+  return (
+    <StyledColor
+      className={fullClassName}
+      onClick={() => copyToClipboard(copyClassName ? fullClassName : value)}
+      style={{ backgroundColor: value }}
+    >
+      <p className="mb-2">{value}</p>
+      {<p>{displayedValue}</p>}
+    </StyledColor>
+  )
+}
 
 export const TailwindCssDotComColor = ({
   appendToClassName = '',
@@ -70,11 +72,6 @@ const StyledColor = styled.div`
   text-align: center;
   margin: 8px;
   padding: 8px;
-`
-
-export const StyledPalette = styled(Palette)`
-  display: flex;
-  flex-wrap: wrap;
 `
 
 interface PaletteProps {
@@ -107,6 +104,7 @@ const Palette = ({
                 <Color
                   key={variants[value]}
                   name={name}
+                  modifier={value}
                   value={variants[value]}
                 />
               ))
@@ -117,3 +115,8 @@ const Palette = ({
         ))}
   </div>
 )
+
+export const StyledPalette = styled(Palette)`
+  display: flex;
+  flex-wrap: wrap;
+`
