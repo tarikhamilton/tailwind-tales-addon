@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - main
-    # paths: ['stories/**', 'src/components/**']
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -16,7 +15,7 @@ jobs:
         with:
           node-version: '15'
       - name: Install and Build 🔧
-        run: |
+        run:
           npm -v
           npm install --legacy-peer-deps
           npm run build-storybook
