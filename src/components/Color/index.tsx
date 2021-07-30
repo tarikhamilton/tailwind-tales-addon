@@ -15,12 +15,11 @@ export interface ColorProps {
   separator?: string
   /** Color value such as hex or rgb. */
   value: string
+  /** Color variants. */
+  variants?: Record<number | string, string>
   /** Copy Tailwind class name to clipboard instead of color value. */
   copyClassName?: boolean
 }
-
-const IGNORED_COLOR_VALUES = ['transparent', 'current', 'black', 'white']
-const DEFAULT_COLOR_WEIGHT = 400
 
 export const Color = ({
   appendToClassName = '',
@@ -74,51 +73,4 @@ const StyledColor = styled.div`
   text-align: center;
   margin: 8px;
   padding: 8px;
-`
-
-interface PaletteProps {
-  className?: string
-  colors: any
-  showVariants?: boolean
-}
-
-const Palette = ({
-  className = '',
-  colors,
-  showVariants = false,
-}: PaletteProps) => (
-  <div className={className}>
-    {colors &&
-      Object.keys(colors)
-        .filter((color) => !IGNORED_COLOR_VALUES.includes(color))
-        .map((color) => {
-          const defaultColor =
-            colors[color].DEFAULT ||
-            colors[color][DEFAULT_COLOR_WEIGHT] ||
-            colors[color]
-
-          return { name: color, defaultColor, variants: colors[color] || [] }
-        })
-        .map(({ name, defaultColor: value, variants }) => (
-          <>
-            {showVariants ? (
-              Object.keys(variants).map((value) => (
-                <Color
-                  key={variants[value]}
-                  name={name}
-                  modifier={value}
-                  value={variants[value]}
-                />
-              ))
-            ) : (
-              <Color key={value} name={name} value={value} />
-            )}
-          </>
-        ))}
-  </div>
-)
-
-export const StyledPalette = styled(Palette)`
-  display: flex;
-  flex-wrap: wrap;
 `
