@@ -1,12 +1,12 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
-import Color from '.'
+import Swatch from '.'
 
 export default {
-  title: 'Color',
-  component: Color,
+  title: 'Swatch',
+  component: Swatch,
 } as Meta
 
 export const Primary = () => (
-  <Color name="Bad Dad" value="#baddad" />
+  <Swatch name="Bad Dad" value="#baddad" />
 )

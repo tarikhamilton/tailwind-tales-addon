@@ -1,8 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import copyToClipboard from '../../copyToClipboard'
-
-export interface ColorProps {
+export interface SwatchProps {
   /** Overwrite the default className. Use appendToClassName to add onto it. */
   className?: string
   /** Appends to className. */
@@ -21,7 +20,7 @@ export interface ColorProps {
   copyClassName?: boolean
 }
 
-export const Color = ({
+export const Swatch = ({
   appendToClassName = '',
   className = 'h-32 w-32 flex flex-col items-center justify-center shadow-lg',
   name = '',
@@ -29,7 +28,7 @@ export const Color = ({
   separator = '-',
   value,
   copyClassName = false,
-}: ColorProps) => {
+}: SwatchProps) => {
   const displayedValue = modifier ? `${name}${separator}${modifier}` : name
   const fullClassName = className + appendToClassName
 
@@ -45,25 +44,30 @@ export const Color = ({
   )
 }
 
-export default Color
+export default Swatch
 
 export const TailwindCssDotComColor = ({
   appendToClassName = '',
   className = 'h-10 w-full rounded ring-1 ring-inset ring-black ring-opacity-0',
   name = '',
   modifier = '',
+  separator = '-',
   value,
-}: ColorProps) => (
-  <div>
-    <div
-      className={className + appendToClassName}
-      onClick={() => copyToClipboard(value)}
-      style={{ backgroundColor: value }}
-    ></div>
-    <p className="mb-2">{value}</p>
-    {name && <p>{name}</p>}
-  </div>
-)
+}: SwatchProps) => {
+  const displayedValue = modifier ? `${name}${separator}${modifier}` : name
+
+  return (
+    <div>
+      <div
+        className={className + appendToClassName}
+        onClick={() => copyToClipboard(value)}
+        style={{ backgroundColor: value }}
+      ></div>
+      <p className="mb-2">{value}</p>
+      <p>{displayedValue}</p>
+    </div>
+  )
+}
 
 const StyledColor = styled.div`
   &:before {
