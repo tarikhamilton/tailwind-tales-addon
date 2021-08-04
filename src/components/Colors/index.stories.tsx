@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/react'
 import colors from 'tailwindcss/colors'
-import { TailwindCssDotComColor } from '../Color'
+import { TailwindCssDotComColor } from '../Swatch'
 import BasicPalette from './BasicPalette'
 import { TailwindcssDotcomPalette } from './TailwindcssDotcomPalette'
 

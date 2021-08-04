@@ -46,26 +46,27 @@ export const Swatch = ({
 
 export default Swatch
 
-export const TailwindCssDotComColor = ({
+export const BasicColor = ({
   appendToClassName = '',
-  className = 'h-10 w-full rounded ring-1 ring-inset ring-black ring-opacity-0',
+  className = 'h-32 w-32 flex flex-col items-center justify-center shadow-lg',
   name = '',
   modifier = '',
   separator = '-',
   value,
+  copyClassName = false,
 }: SwatchProps) => {
   const displayedValue = modifier ? `${name}${separator}${modifier}` : name
+  const fullClassName = className + appendToClassName
 
   return (
-    <div>
-      <div
-        className={className + appendToClassName}
-        onClick={() => copyToClipboard(value)}
-        style={{ backgroundColor: value }}
-      ></div>
+    <StyledColor
+      className={fullClassName}
+      onClick={() => copyToClipboard(copyClassName ? fullClassName : value)}
+      style={{ backgroundColor: value }}
+    >
       <p className="mb-2">{value}</p>
-      <p>{displayedValue}</p>
-    </div>
+      {<p>{displayedValue}</p>}
+    </StyledColor>
   )
 }
 

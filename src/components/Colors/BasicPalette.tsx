@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { formatColors, PaletteProps } from '.'
-import Swatch from '../Color'
+import Swatch from '../Swatch'
 
 export const BasicPalette = ({
   className = 'flex flex-wrap',

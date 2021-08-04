@@ -1,5 +1,5 @@
 import { ReactElement } from 'react'
-import { SwatchProps } from '../Color'
+import { SwatchProps } from '../Swatch'
 
 export type TailwindColor = Record<string, Record<string | number, string>>
 
@@ -14,19 +14,27 @@ export interface PaletteProps {
 }
 
 const EXCLUDE_LIST = ['black', 'white']
-
-const IGNORED_COLOR_VALUES = ['transparent', 'current', 'black', 'white']
-
 const DEFAULT_COLOR_WEIGHT = 400
 
-export function formatColors(colors: TailwindColor): FormattedColor[] {
+const defaultOptions = {
+  exclude: EXCLUDE_LIST,
+  defaultColorWeight: DEFAULT_COLOR_WEIGHT,
+}
+
+export function formatColors(
+  colors: TailwindColor,
+  options: {
+    exclude?: string[]
+    defaultColorWeight?: number | string
+  } = defaultOptions
+): FormattedColor[] {
   return Object.entries(colors)
-    .filter(([name]) => !EXCLUDE_LIST.includes(name))
+    .filter(([name]) => !options.exclude?.includes(name))
     .map(([name, color]) => {
       if (typeof color !== 'string') {
         const defaultColor =
           colors[name].DEFAULT ||
-          colors[name][DEFAULT_COLOR_WEIGHT] ||
+          colors[name][options?.defaultColorWeight] ||
           colors[name]
 
         return [

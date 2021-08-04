@@ -1,22 +1,11 @@
 import React from 'react'
 import { formatColors, PaletteProps } from '.'
-import { default as DefaultColor } from '../Color'
-
-export const NestedColorsComponent = ({
-  name,
-  colors,
-  Swatch = DefaultColor,
-}: PaletteProps) => (
-  <div className="min-w-0 flex-1 grid grid-cols-5 2xl:grid-cols-10 gap-x-4 gap-y-3 2xl:gap-x-2">
-    {Object.entries(colors).map(([variant, color]: any) => (
-      <Swatch key={color} name={name} modifier={variant} value={color} />
-    ))}
-  </div>
-)
+import { default as DefaultColor } from '../Swatch'
+import { TailwindCssDotComColor } from '../Swatch/TailwindCssDotComColor'
 
 export const TailwindcssDotcomPalette = ({
   colors,
-  Swatch = DefaultColor,
+  Swatch = TailwindCssDotComColor,
   NestedColors = NestedColorsComponent,
 }: PaletteProps) => (
   <>
@@ -41,4 +30,22 @@ export const Title = ({ name }) => (
     <h2>{name}</h2>
     <pre>colors.{name}</pre>
   </header>
+)
+
+export const NestedColorsComponent = ({
+  name,
+  colors,
+  Swatch = DefaultColor,
+}: PaletteProps) => (
+  <div className="min-w-0 flex-1 grid grid-cols-5 2xl:grid-cols-10 gap-x-4 gap-y-3 2xl:gap-x-2">
+    {Object.entries(colors).map(([variant, color]: any) => (
+      <Swatch
+        key={color}
+        Component={TailwindCssDotComColor}
+        name={name}
+        modifier={variant}
+        value={color}
+      />
+    ))}
+  </div>
 )
