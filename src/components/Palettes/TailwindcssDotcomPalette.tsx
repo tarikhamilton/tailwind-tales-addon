@@ -1,11 +1,11 @@
 import React from 'react'
 import { formatColors, PaletteProps } from '.'
 import { default as DefaultColor } from '../Swatch'
-import { TailwindCssDotComColor } from '../Swatch/TailwindCssDotComColor'
+import { TailwindCssDotComSwatch } from '../Swatch/TailwindcssDotcomColor'
 
 export const TailwindcssDotcomPalette = ({
   colors,
-  Swatch = TailwindCssDotComColor,
+  Swatch = TailwindCssDotComSwatch,
   NestedColors = NestedColorsComponent,
 }: PaletteProps) => (
   <>
@@ -25,6 +25,8 @@ export const TailwindcssDotcomPalette = ({
   </>
 )
 
+export default TailwindcssDotcomPalette
+
 export const Title = ({ name }) => (
   <header className="w-32 flex-shrink-0">
     <h2>{name}</h2>
@@ -41,7 +43,7 @@ export const NestedColorsComponent = ({
     {Object.entries(colors).map(([variant, color]: any) => (
       <Swatch
         key={color}
-        Component={TailwindCssDotComColor}
+        Component={TailwindCssDotComSwatch}
         name={name}
         modifier={variant}
         value={color}

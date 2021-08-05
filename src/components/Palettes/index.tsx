@@ -13,7 +13,7 @@ export interface PaletteProps {
   showVariants?: boolean
 }
 
-const EXCLUDE_LIST = ['black', 'white']
+const EXCLUDE_LIST = ['black', 'white', 'transparent', 'current']
 const DEFAULT_COLOR_WEIGHT = 400
 
 const defaultOptions = {

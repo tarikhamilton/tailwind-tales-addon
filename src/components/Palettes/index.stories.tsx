@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/react'
 import colors from 'tailwindcss/colors'
-import { TailwindCssDotComColor } from '../Swatch'
+import { TailwindCssDotComSwatch } from '../Swatch/TailwindcssDotcomColor'
 import BasicPalette from './BasicPalette'
 import { TailwindcssDotcomPalette } from './TailwindcssDotcomPalette'
 
@@ -15,5 +15,5 @@ export const BasicWithVariants = () => (
 )
 
 export const TailwindcssDotcom = () => (
-  <TailwindcssDotcomPalette colors={colors} Swatch={TailwindCssDotComColor} />
+  <TailwindcssDotcomPalette colors={colors} Swatch={TailwindCssDotComSwatch} />
 )

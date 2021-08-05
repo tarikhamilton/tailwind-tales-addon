@@ -1,26 +1,33 @@
 import React from 'react'
-import { SwatchProps } from '.'
+import Swatch, { ColorComponentProps, SwatchProps } from '.'
 import copyToClipboard from '../../copyToClipboard'
 
 export const TailwindCssDotComColor = ({
-  appendToClassName = '',
-  className = 'h-10 w-full rounded ring-1 ring-inset ring-black ring-opacity-0',
-  name = '',
-  modifier = '',
-  separator = '-',
+  className,
+  colorName,
   value,
-}: SwatchProps) => {
-  const displayedValue = modifier ? `${name}${separator}${modifier}` : name
-
-  return (
-    <div>
-      <div
-        className={className + appendToClassName}
-        onClick={() => copyToClipboard(value)}
-        style={{ backgroundColor: value }}
-      ></div>
-      <p className="mb-2">{value}</p>
-      <p>{displayedValue}</p>
+  copyColorName,
+  copyColorValue,
+}: ColorComponentProps) => (
+  <div className="mb-2">
+    <div
+      className={`h-10 w-full rounded ring-1 ring-inset ring-black ring-opacity-0 cursor-pointer ${className}`}
+      onClick={copyColorValue}
+      style={{ backgroundColor: value }}
+    ></div>
+    <div className="md:flex justify-between">
+      <p className="text-gray-900" onClick={copyColorName}>
+        {colorName}
+      </p>
+      <p className="text-gray-500" onClick={copyColorValue}>
+        {value}
+      </p>
     </div>
-  )
+  </div>
+)
+
+export const TailwindCssDotComSwatch = (props: ColorComponentProps) => {
+  return <Swatch Component={TailwindCssDotComColor} {...props}></Swatch>
 }
+
+export default TailwindCssDotComColor

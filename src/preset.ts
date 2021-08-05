@@ -7,3 +7,6 @@ export function managerEntries(entry = []) {
 export const TailwindTalesContext = createContext({})
 
 export const TailwindTaleProvider = TailwindTalesContext.Provider
+
+export { BasicPalette } from './components/Palettes/BasicPalette'
+export { TailwindcssDotcomPalette } from './components/Palettes/TailwindcssDotcomPalette'
